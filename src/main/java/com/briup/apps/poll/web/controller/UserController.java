@@ -57,6 +57,7 @@ public class UserController {
 				}
 			}
 
+	@ApiOperation(value="通过教师ID删除教师信息")
 	@GetMapping("deleteByIdUser")//删除
 	public MsgResponse deleteByIdUser(@RequestParam Long id){
 		try {
@@ -68,7 +69,7 @@ public class UserController {
 		}		
 	}
 
-	
+	@ApiOperation(value="批量删除教师信息")
 	@PostMapping("batchDelete")
 	public MsgResponse batchDelete(long[] ids){
 		try {
@@ -85,7 +86,7 @@ public class UserController {
 		}
 	}
 	
-	
+	@ApiOperation(value="查询所有的教师信息")
 	@GetMapping("findAllUser")
 	public MsgResponse findAllUser(){
 		try {

@@ -56,6 +56,7 @@ public class CourseController {
 				}
 			}
 
+	@ApiOperation(value="通过课程ID删除课程信息")
 	@GetMapping("deleteByIdCourse")//删除
 	public MsgResponse deleteByIdCourse(@RequestParam Long id){
 		try {
@@ -67,7 +68,7 @@ public class CourseController {
 		}		
 	}
 
-	
+	@ApiOperation(value="批量删除课程信息")
 	@PostMapping("batchDelete")
 	public MsgResponse batchDelete(long[] ids){
 		try {
@@ -84,7 +85,7 @@ public class CourseController {
 		}
 	}
 	
-	
+	@ApiOperation(value="查询所有的课程信息")
 	@GetMapping("findAllCourse")
 	public MsgResponse findAllCourse(){
 		try {

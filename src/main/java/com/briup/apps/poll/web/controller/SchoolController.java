@@ -47,18 +47,18 @@ public class SchoolController {
 		}		
 	}
 	// 关键字查询
-			@ApiOperation("根据关键字查看学校信息")
-			@GetMapping("/queryByKeyWords")
-			public MsgResponse query(String keywords) {
-				try {
-					List<School> list = schoolService.query(keywords);
-					return MsgResponse.success("成功", list);
-				} catch (Exception e) {
-					e.printStackTrace();
-					return MsgResponse.error(e.getMessage());
-				}
-			}
-
+	@ApiOperation("根据关键字查看学校信息")
+	@GetMapping("/queryByKeyWords")
+	public MsgResponse query(String keywords) {
+		try {
+			List<School> list = schoolService.query(keywords);
+			return MsgResponse.success("成功", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}
+	}
+	@ApiOperation(value="通过学校ID删除学校信息")
 	@GetMapping("deleteByIdSchool")//删除
 	public MsgResponse deleteByIdSchool(@RequestParam Long id){
 		try {
@@ -70,7 +70,7 @@ public class SchoolController {
 		}		
 	}
 
-	
+	@ApiOperation(value="批量删除学校信息")
 	@PostMapping("batchDelete")
 	public MsgResponse batchDelete(long[] ids){
 		try {
@@ -87,7 +87,7 @@ public class SchoolController {
 		}
 	}
 	
-	
+	@ApiOperation(value="查询所有的学校信息")
 	@GetMapping("findAllSchool")
 	public MsgResponse findAllSchool(){
 		try {
