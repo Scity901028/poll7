@@ -1,5 +1,7 @@
 package com.briup.apps.poll.bean.extend;
 
+import java.util.List;
+
 import com.briup.apps.poll.bean.Grade;
 import com.briup.apps.poll.bean.Options;
 import com.briup.apps.poll.bean.Question;
@@ -8,17 +10,8 @@ import com.briup.apps.poll.bean.User;
 public class QuestionnaireVM {
 	private Long id;
 	private String name;
-	public Long getQuestion_id() {
-		return question_id;
-	}
-	public void setQuestion_id(Long question_id) {
-		this.question_id = question_id;
-	}
 	private String description;
-	private String createDate;
-	private Long question_id;
-	private Question question;
-	private Options options;
+	private List<QuestionVM>questionVMs;
 	public Long getId() {
 		return id;
 	}
@@ -37,23 +30,14 @@ public class QuestionnaireVM {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getCreateDate() {
-		return createDate;
+	public List<QuestionVM> getQuestionVMs() {
+		return questionVMs;
 	}
-	public void setCreateDate(String createDate) {
-		this.createDate = createDate;
+	public void setQuestionVMs(List<QuestionVM> questionVMs) {
+		this.questionVMs = questionVMs;
 	}
-	public Question getQuestion() {
-		return question;
-	}
-	public void setQuestion(Question question) {
-		this.question = question;
-	}
-	public Options getOptions() {
-		return options;
-	}
-	public void setOptions(Options options) {
-		this.options = options;
-	}
-
-}	
+	
+}
+	
+	
+	
