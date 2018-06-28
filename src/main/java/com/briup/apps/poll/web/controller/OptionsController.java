@@ -27,7 +27,7 @@ public class OptionsController {
 	 */
 	@Autowired
 	private IOptionsService optionsService;
-	
+	@ApiOperation("删除选项信息")
 	@GetMapping("deleteByIdOptions")//删除
 	public MsgResponse deleteByIdOptions(@RequestParam Long id){
 		try {
@@ -38,7 +38,8 @@ public class OptionsController {
 			return MsgResponse.error(e.getMessage());
 		}		
 	}
-
+	
+    @ApiOperation("查看选项信息")
 	@GetMapping("findAllOptions")
 	public MsgResponse findAllOptions(){
 		try {
