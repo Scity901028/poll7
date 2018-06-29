@@ -21,25 +21,37 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping("/Survey")
 public class SurveyController {
 	@Autowired
-	private ISurveyService surveyService;	
+	private ISurveyService surveyService;
 	
-	@ApiOperation(value="查询所有的课调信息",notes="")
-	@GetMapping("findAllSurveyVM")
-	public MsgResponse findAllSurveyVM(){
+	@ApiOperation(value="保存或更新课调信息",notes="只需要输入courseId，userId，clazzId,questionnaire_id")
+	@GetMapping(value="saveOrUpdate")
+	public MsgResponse saveOrUpdate(Survey survey){
+		try{
+			surveyService.saveOrUpdate(survey);
+			return  MsgResponse.success("保存或更新成功", null);
+		}catch(Exception e){
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}		
+	}
+	
+	@ApiOperation(value="通过ID查询所有的课调信息",notes="级联查询出所有的课程，班级，讲师，问卷")
+	@GetMapping("findSurveyById")
+	public MsgResponse findSurveyById(long id){
 		try {
-			List<SurveyVM> list = surveyService.findAllSurveyVM();
+			SurveyVM list = surveyService.findById(id);
 			return MsgResponse.success("success", list);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return MsgResponse.error(e.getMessage());
 		}
 	}
+	
 	@ApiOperation("查询所有的课调信息")
-	@GetMapping("findAllSurvey")
-	public MsgResponse findAllSurvey(){
+	@GetMapping("findAllSurveyVM")
+	public MsgResponse findAllSurveyVM(){
 		try {
-			List<Survey> list = surveyService.findAll();
-			
+			List<SurveyVM> list = surveyService.findAll();
 			return MsgResponse.success("success", list);
 		} catch (Exception e) {
 			e.printStackTrace();
