@@ -70,6 +70,11 @@ public class ClazzServiceImpl implements IClazzService {
 		 clazzMapper.insert(clazz);
 	}
 
+	@Override
+	public ClazzVM selectById(long id) throws Exception {
+		return clazzVMMapper.selectById(id);
+	}
+
 
    
 }
