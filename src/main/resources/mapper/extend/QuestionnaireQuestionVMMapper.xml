@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.briup.apps.poll.dao.extend.QqVMMapper">
-  <select id="selectAll" resultMap="QqVMResultMap">
+<mapper namespace="com.briup.apps.poll.dao.extend.QuestionnaireQuestionVMMapper">
+  <select id="selectAll" resultMap="QuestionnaireQuestionVMResultMap">
   select*from poll_qq
   <!-- id questionnaire question  -->
   </select>
-    <resultMap type="com.briup.apps.poll.bean.extend.QqVM" 
-    id="QqVMResultMap">
+    <resultMap type="com.briup.apps.poll.bean.extend.QuestionnaireQuestionVM" 
+    id="QuestionnaireQuestionVMResultMap">
     <id column="id" property="id"/>
     
     <association 

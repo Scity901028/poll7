@@ -3,7 +3,7 @@ package com.briup.apps.poll.bean.extend;
 import com.briup.apps.poll.bean.Question;
 import com.briup.apps.poll.bean.Questionnaire;
 
-public class QqVM {
+public class QuestionnaireQuestionVM {
 	private Long id;
 	private Questionnaire questionnaire;
 	private Question question;
