@@ -7,6 +7,6 @@ import com.briup.apps.poll.bean.extend.GradeVM;
 public interface GradeVMMapper {
 	List<GradeVM> selectAll();
 
-    //void updateByPrimaryKey(GradeVM gradeVM);
+	// void updateByPrimaryKey(GradeVM gradeVM);
 
 }

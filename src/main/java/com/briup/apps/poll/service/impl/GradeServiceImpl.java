@@ -13,13 +13,11 @@ import com.briup.apps.poll.dao.extend.GradeVMMapper;
 import com.briup.apps.poll.service.IGradeService;
 
 @Service
-
 public class GradeServiceImpl implements IGradeService {
 	@Autowired
 	private GradeMapper gradeMapper;
 	@Autowired
 	private GradeVMMapper gradeVMMapper;
-	
 
 	@Override
 	public List<Grade> findAll() throws Exception {
@@ -38,14 +36,13 @@ public class GradeServiceImpl implements IGradeService {
 
 	@Override
 	public void saveOrUpdate(Grade grade) throws Exception {
-		
-		
-		if (grade.getId()!= null) {
+
+		if (grade.getId() != null) {
 			// 修改操作
-            gradeMapper.updateByPrimaryKeyWithBLOBs(grade);           
+			gradeMapper.updateByPrimaryKeyWithBLOBs(grade);
 		} else {
-			
-			gradeMapper.insert(grade);			
+
+			gradeMapper.insert(grade);
 		}
 	}
 
@@ -56,7 +53,7 @@ public class GradeServiceImpl implements IGradeService {
 			gradeMapper.deleteByPrimaryKey(id);
 		}
 	}
-	
+
 	@Override
 	public void deleteById(long id) throws Exception {
 		// TODO Auto-generated method stub

@@ -24,6 +24,7 @@ import io.swagger.annotations.ApiOperation;
 public class GradeController {
 	@Autowired
 	private IGradeService gradeService;
+
 	@ApiOperation(value = "查询所有的年级信息", notes = "每个年级信息中包含年级所属学校的信息")
 	@GetMapping("findAllGradeVM")
 	public MsgResponse findAllGradeVM() {
@@ -36,26 +37,25 @@ public class GradeController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
-    
+
 	@ApiOperation("查询所有的年级信息")
 	@GetMapping("findAllGrade")
-    public MsgResponse findAllGrade(){
-    	try{
-    		List<Grade> list=gradeService.findAll();
-    		return MsgResponse.success("success",list);
-    	}catch (Exception e) {
-			// TODO: handle exception
-    		e.printStackTrace();
-    		return MsgResponse.error(e.getMessage());
-		}
-    }
-	
-	@ApiOperation(value="保存或修改年级信息",
-			notes="如果年级id不为空表示更新操作，如果年级id为空表示插入操作")
-	@PostMapping("saveOrUpdateGrade")
-	public MsgResponse saveOrUpdateGrade(Grade grade){
+	public MsgResponse findAllGrade() {
 		try {
-			//调用service层代码完成保存和更新操作
+			List<Grade> list = gradeService.findAll();
+			return MsgResponse.success("success", list);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}
+	}
+
+	@ApiOperation(value = "保存或修改年级信息", notes = "如果年级id不为空表示更新操作，如果年级id为空表示插入操作")
+	@PostMapping("saveOrUpdateGrade")
+	public MsgResponse saveOrUpdateGrade(Grade grade) {
+		try {
+			// 调用service层代码完成保存和更新操作
 			gradeService.saveOrUpdate(grade);
 			return MsgResponse.success("success", null);
 		} catch (Exception e) {
@@ -63,7 +63,7 @@ public class GradeController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
-		
+
 	@ApiOperation("批量删除信息")
 	@PostMapping("batchDelete")
 	public MsgResponse batchDelete(long[] ids) {
@@ -93,8 +93,4 @@ public class GradeController {
 		}
 	}
 
-	
 }
-
-
-
