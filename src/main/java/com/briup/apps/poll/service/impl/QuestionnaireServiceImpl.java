@@ -5,78 +5,80 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.briup.apps.poll.bean.Options;
-import com.briup.apps.poll.bean.QuestionExample;
+import com.briup.apps.poll.bean.QuestionnaireQuestion;
+import com.briup.apps.poll.bean.QuestionnaireQuestionExample;
 import com.briup.apps.poll.bean.Questionnaire;
 import com.briup.apps.poll.bean.QuestionnaireExample;
+import com.briup.apps.poll.bean.QuestionnaireQuestion;
 import com.briup.apps.poll.bean.extend.QuestionnaireVM;
-import com.briup.apps.poll.dao.OptionsMapper;
-import com.briup.apps.poll.dao.QuestionMapper;
+import com.briup.apps.poll.dao.QuestionnaireQuestionMapper;
 import com.briup.apps.poll.dao.QuestionnaireMapper;
 import com.briup.apps.poll.dao.extend.QuestionnaireVMMapper;
+import com.briup.apps.poll.service.IQuestionService;
 import com.briup.apps.poll.service.IQuestionnaireService;
 
+
+
 @Service
+
 public class QuestionnaireServiceImpl implements IQuestionnaireService{
-	@Autowired
-	private QuestionnaireMapper questionnaireMapper;
-	@Autowired
-	private QuestionnaireVMMapper questionnaireVMMapper;
-	@Autowired
-	private QuestionMapper questionMapper;
-//	@Autowired
-//	private QuestionnaireMapper questionMapper;
-
-//	@Override
-//	public List<QuestionnaireVM> findAllQuestionnaireVM() throws Exception {
-//		return questionMapper.findAll();
-//	}
-
+    @Autowired
+	private QuestionnaireMapper questionnaireMapper;  
+    @Autowired
+     private QuestionnaireVMMapper questionnaireVMMapper;
+    @Autowired
+    private QuestionnaireQuestionMapper qqMapper;
+     
+	@Override
+	public QuestionnaireVM findById(long id) throws Exception {
+		return questionnaireVMMapper.selectById(id);
+	}
+	
 	@Override
 	public List<Questionnaire> findAll() throws Exception {
 		QuestionnaireExample example = new QuestionnaireExample();
-		return questionnaireMapper.selectByExample(example);
+		return questionnaireMapper.selectByExampleWithBLOBs(example);
+	}
+	@Override
+	public void deleteById(long id) throws Exception {
+		questionnaireMapper.deleteByPrimaryKey(id);
 	}
 
-@Override
-public List<QuestionnaireVM> findAllQuestionnaireVM() throws Exception {
-	return questionnaireVMMapper.selectAll();
-}
-
-//	@Override
-//	public void saveOrUpdate(QuestionnaireVM questionVM) throws Exception {
-//		//0. 从questionVM中拆分出来question options
-//		Questionnaire question = new Questionnaire();
-//		question.setId(questionnaireVM.getId());
-//		question.setName(questionnaireVM.getName());
-//		question.setQuestiontype(questionnaireVM.getQuestionnaireType());
-//		List<Options> options = questionnaireVM.getOptions();
-//		
-//		if(questionnaire.getId()!=null){
-//			//修改操作,作业。。。（问题 修改， 删除，添加）
-//			
-//		} else{
-//			//保存操作
-//			//1. 保存问题信息
-//			questionnaireMapper.insert(questionnaire);
-//			//获取问题的主键
-//			long id = questionnaire.getId();
-//			//2. 保存选项信息
-//			for(Options option: options){
-//				option.setQuestionnaireId(id);
-//				optionsMapper.insert(option);
-//			}
-//			
-//		}
-//		
-//	}
-//	@Override
-//	public void batchDelete(List<Long> ids) throws Exception {
-//		for(long id : ids){
-//			questionMapper.deleteByPrimaryKey(id);
-//		}
-//	}
-//
-//}
-
+	@Override
+	public void saveOrUpdate(Questionnaire questionnaire, long[] ids) throws Exception {
+		//1.判断是保存还是更新
+		//1.1如果是保存
+		if(questionnaire.getId() == null){
+			//1.1.1保存问卷信息
+			questionnaireMapper.insert(questionnaire); 
+			//1.1.2维护问卷和问题的关系
+			
+			for(long  id :ids){
+				QuestionnaireQuestion qq = new QuestionnaireQuestion();
+				
+				qq.setQuestionId(id);
+				qq.setQuestionnaireId(questionnaire.getId());
+				qqMapper.insert(qq);
+			}
+			
+		}else{
+			//1.2如果是修改
+			   
+			
+			   //1.2.2删除问卷下所有题目的关系
+			   QuestionnaireQuestionExample qqExample = new QuestionnaireQuestionExample();
+			   qqExample.createCriteria().andQuestionnaireIdEqualTo(questionnaire.getId());
+			   qqMapper.deleteByExample(qqExample);
+			   //1.2.3重新维护问卷和问题的关系
+			   for(long  id :ids){
+				   QuestionnaireQuestion qq = new QuestionnaireQuestion();
+					qq.setQuestionId(id);
+					qq.setQuestionnaireId(questionnaire.getId());
+					qqMapper.insert(qq);
+				}
+			   //1.2.1更新问卷信息
+			   //questionnaireMapper.updateByPrimaryKey(questionnaire);
+		}
+		
+	}
 }
