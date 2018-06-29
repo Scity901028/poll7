@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.briup.apps.poll.bean.Course;
+import com.briup.apps.poll.bean.extend.ClazzVM;
 import com.briup.apps.poll.service.ICourseService;
 import com.briup.apps.poll.util.MsgResponse;
 
@@ -68,6 +69,19 @@ public class CourseController {
 		}		
 	}
 
+	@ApiOperation("通过ID查询所有的班级信息")
+	@GetMapping("selectCourseById")
+	public MsgResponse selectCourseById(long id) {
+		try {
+			Course list = courseService.selectById(id);
+
+			return MsgResponse.success("success", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}
+	}
+	
 	@ApiOperation(value="批量删除课程信息")
 	@PostMapping("batchDelete")
 	public MsgResponse batchDelete(long[] ids){

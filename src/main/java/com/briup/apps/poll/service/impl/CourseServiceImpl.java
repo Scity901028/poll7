@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.briup.apps.poll.bean.Course;
 import com.briup.apps.poll.bean.CourseExample;
+import com.briup.apps.poll.bean.extend.ClazzVM;
 import com.briup.apps.poll.dao.CourseMapper;
 import com.briup.apps.poll.service.ICourseService;
 
@@ -58,6 +59,10 @@ public class CourseServiceImpl implements ICourseService {
 		}
 	}
 
+	@Override
+	public Course selectById(long id) throws Exception {
+		return courseMapper.selectByPrimaryKey(id);
+	}
 }
 
 
