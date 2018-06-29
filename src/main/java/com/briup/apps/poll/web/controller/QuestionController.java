@@ -24,6 +24,21 @@ public class QuestionController {
 	@Autowired 
 	private IQuestionService questionService;
 	
+	@ApiOperation(value="通过问题ID删除题目信息",
+			notes="删除问题同时删除选项")
+	@GetMapping("deleteQuestionById")
+	public MsgResponse deleteQuestionById(long id){
+		try {
+			
+			questionService.deleteById(id);
+			return MsgResponse.success("删除成功", null);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}
+	}
+	
+	
 	@ApiOperation(value="保存或修改题目信息",
 			notes="如果题目id不为空表示更新操作，如果题目id为空表示插入操作，保存或者更新题目的时候级联保存或者更新选项")
 	@PostMapping("saveOrUpdateQuestion")
@@ -37,7 +52,6 @@ public class QuestionController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
-	
 	
 	
 	
