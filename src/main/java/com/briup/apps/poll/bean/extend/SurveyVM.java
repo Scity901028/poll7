@@ -13,10 +13,31 @@ public class SurveyVM {
 	private String status;
 	private String code;
 	private String surveyDate;
-	private Questionnaire questionnaire;
 	private Course course;
-	private User user;
-	private Clazz clazz;
+	private User teacher;
+	public User getTeacher() {
+		return teacher;
+	}
+	public void setTeacher(User teacher) {
+		this.teacher = teacher;
+	}
+	private ClazzVM clazzVM;
+	private QuestionnaireVM questionnaireVM;
+	
+	
+	public QuestionnaireVM getQuestionnaireVM() {
+		return questionnaireVM;
+	}
+	public void setQuestionnaireVM(QuestionnaireVM questionnaireVM) {
+		this.questionnaireVM = questionnaireVM;
+	}
+	public ClazzVM getClazzVM() {
+		return clazzVM;
+	}
+	public void setClazzVM(ClazzVM clazzVM) {
+		this.clazzVM = clazzVM;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -41,12 +62,7 @@ public class SurveyVM {
 	public void setSurveyDate(String surveyDate) {
 		this.surveyDate = surveyDate;
 	}
-	public Questionnaire getQuestionnaire() {
-		return questionnaire;
-	}
-	public void setQuestionnaire(Questionnaire questionnaire) {
-		this.questionnaire = questionnaire;
-	}
+
 	public Course getCourse() {
 		return course;
 	}
@@ -54,17 +70,12 @@ public class SurveyVM {
 		this.course = course;
 	}
 	public User getUser() {
-		return user;
+		return teacher;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser(User teacher) {
+		this.teacher = teacher;
 	}
-	public Clazz getClazz() {
-		return clazz;
-	}
-	public void setClazz(Clazz clazz) {
-		this.clazz = clazz;
-	}
+
 	
 	
     

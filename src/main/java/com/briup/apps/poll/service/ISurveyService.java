@@ -6,7 +6,9 @@ import com.briup.apps.poll.bean.Survey;
 import com.briup.apps.poll.bean.extend.SurveyVM;
 
 public interface ISurveyService {
-	List<Survey> findAll() throws Exception;
+	List<SurveyVM> findAll() throws Exception;
 
-	List<SurveyVM> findAllSurveyVM() throws Exception;
+	SurveyVM findById(long id) throws Exception;
+	
+	void saveOrUpdate(Survey survey) throws Exception;
 }

@@ -1,5 +1,8 @@
 package com.briup.apps.poll.service.impl;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,21 +24,47 @@ public class SurveyServiceImpl implements ISurveyService {
 	@Autowired
 	private SurveyMapper surveyMpper;
 
-	@GetMapping("findAll")
-	@Override
-	public List<Survey> findAll() throws Exception {
-		// 模板
-		SurveyExample example = new SurveyExample();
-		// 调用QBE，并将结果返回
-		return surveyMpper.selectByExample(example);
 
+	
+	
+	@Override
+	public void saveOrUpdate(Survey survey) throws Exception {
+		//保存课调之前初始化课调信息
+		survey.setStatus(Survey.STATUS_INIT);
+		survey.setCode("");
+		
+		Date surveyDate=new Date();
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		 String aa=sdf.format(surveyDate);		
+		survey.setSurveydate(aa);
+		surveyMpper.insert(survey);
+		
 	}
 
-	@GetMapping("findAllSurveyVM")
+
+
 	@Override
-	public List<SurveyVM> findAllSurveyVM() throws Exception {
+	public List<SurveyVM> findAll() throws Exception {
 		// TODO Auto-generated method stub
 		return surveyVMMpper.selectAll();
 	}
+
+
+
+	@Override
+	public SurveyVM findById(long id) throws Exception {
+		// TODO Auto-generated method stub
+		return surveyVMMpper.selectById(id);
+	}
+
+
+
+
+
+
+
+
+
+
 
 }
