@@ -13,6 +13,7 @@ import com.briup.apps.poll.dao.extend.GradeVMMapper;
 import com.briup.apps.poll.service.IGradeService;
 
 @Service
+
 public class GradeServiceImpl implements IGradeService {
 	@Autowired
 	private GradeMapper gradeMapper;

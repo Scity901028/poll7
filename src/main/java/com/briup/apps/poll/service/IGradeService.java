@@ -10,7 +10,7 @@ public interface IGradeService {
 
 	List<GradeVM> findAllGradeVM() throws Exception;
 
-//	void saveOrUpdate(GradeVM gradeVM) throws Exception;
+    //void saveOrUpdate(GradeVM gradeVM) throws Exception;
 
 	void batchDelete(List<Long> ids) throws Exception;
 

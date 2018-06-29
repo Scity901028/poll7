@@ -2,7 +2,6 @@ package com.briup.apps.poll.bean.extend;
 
 import com.briup.apps.poll.bean.School;
 
-
 public class GradeVM {
 	private Long id;
 	private String name;
