@@ -36,7 +36,7 @@ public class ClazzController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
-
+/*
 	@ApiOperation("查询所有的班级信息")
 	@GetMapping("findAllClazz")
 	public MsgResponse findAllClazz() {
@@ -49,7 +49,7 @@ public class ClazzController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
-	
+	*/
 	/*
 	@ApiOperation("关键字查询班级信息")
 	@GetMapping("query")
@@ -64,6 +64,18 @@ public class ClazzController {
 		}
 	}
 	*/
+	@ApiOperation("通过ID查询所有的班级信息")
+	@GetMapping("selectClazzById")
+	public MsgResponse selectClazzById(long id) {
+		try {
+			ClazzVM list = clazzService.selectById(id);
+
+			return MsgResponse.success("success", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}
+	}
 	
 	@ApiOperation("批量删除信息")
 	@PostMapping("batchDelete")
