@@ -61,7 +61,7 @@ public class ClazzServiceImpl implements IClazzService {
 	@Override
 	public void update(Clazz clazz)throws Exception {
 		// TODO Auto-generated method stub
-		 clazzMapper.updateByPrimaryKey(clazz);
+		 clazzMapper.updateByPrimaryKeyWithBLOBs(clazz);
 	}
 
 	@Override
