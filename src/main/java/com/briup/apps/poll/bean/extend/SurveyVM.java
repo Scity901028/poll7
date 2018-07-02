@@ -2,9 +2,9 @@ package com.briup.apps.poll.bean.extend;
 
 import java.util.List;
 
-import com.briup.apps.poll.bean.Clazz;
+
 import com.briup.apps.poll.bean.Course;
-import com.briup.apps.poll.bean.Questionnaire;
+
 import com.briup.apps.poll.bean.User;
 
 
@@ -76,14 +76,5 @@ public class SurveyVM {
 	public void setCourse(Course course) {
 		this.course = course;
 	}
-	public User getUser() {
-		return teacher;
-	}
-	public void setUser(User teacher) {
-		this.teacher = teacher;
-	}
-
-	
-	
     
 }

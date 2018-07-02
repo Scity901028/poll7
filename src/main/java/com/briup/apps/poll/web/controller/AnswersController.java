@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.briup.apps.poll.bean.Answers;
 import com.briup.apps.poll.bean.extend.AnswersVM;
-import com.briup.apps.poll.bean.extend.ClazzVM;
 import com.briup.apps.poll.service.IAnswersService;
-import com.briup.apps.poll.service.IClazzService;
 import com.briup.apps.poll.util.MsgResponse;
 
 import io.swagger.annotations.Api;
