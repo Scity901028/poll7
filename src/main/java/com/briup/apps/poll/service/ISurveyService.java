@@ -11,4 +11,8 @@ public interface ISurveyService {
 	SurveyVM findById(long id) throws Exception;
 	
 	void saveOrUpdate(Survey survey) throws Exception;
+	//查找课调单表
+	Survey findSurveyById(long id) throws Exception;
+	
+	List<SurveyVM> findSurveyByStatus(String status) throws Exception; 
 }
