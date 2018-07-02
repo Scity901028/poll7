@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.briup.apps.poll.bean.Answers;
-import com.briup.apps.poll.bean.Clazz;
-import com.briup.apps.poll.bean.Course;
 import com.briup.apps.poll.bean.Survey;
 import com.briup.apps.poll.bean.extend.SurveyVM;
 import com.briup.apps.poll.service.IAnswersService;
