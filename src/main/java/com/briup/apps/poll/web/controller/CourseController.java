@@ -27,7 +27,6 @@ public class CourseController {
 	@Autowired
 	private ICourseService courseService;
 	
-	
 	@ApiOperation(value="保存或更新课程信息",notes="如果参数包含了id,说明这是一个更新操作。如果参数中没有包含id，说明这是一个保存操作")
 	@PostMapping("saveOrupdateCourse")//更新
 	public MsgResponse saveOrupdateCourse(Course course){
@@ -110,7 +109,6 @@ public class CourseController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
-	
 }
 
 

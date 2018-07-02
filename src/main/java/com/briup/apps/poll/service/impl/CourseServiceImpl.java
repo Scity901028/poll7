@@ -34,7 +34,6 @@ public class CourseServiceImpl implements ICourseService {
 	@Override
 	public void save(Course course) throws Exception {
 		courseMapper.insert(course);
-		
 	}
 
 	@Override
@@ -48,8 +47,7 @@ public class CourseServiceImpl implements ICourseService {
 
 	@Override
 	public void deleteById(long id) throws Exception {
-		courseMapper.deleteByPrimaryKey(id);
-		
+		courseMapper.deleteByPrimaryKey(id);	
 	}
 
 	@Override
