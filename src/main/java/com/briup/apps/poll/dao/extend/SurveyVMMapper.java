@@ -8,4 +8,10 @@ public interface SurveyVMMapper {
 	List<SurveyVM> selectAll();
 	
 	SurveyVM selectById(long id);
+		
+	List<SurveyVM> selectByStatus(String status);
+ 
+
+
+
 }
