@@ -51,6 +51,19 @@ public class GradeController {
 		}
 	}
 
+	@ApiOperation("关键字查询年级信息")
+	@GetMapping("keywordsquery")
+	public MsgResponse query(String keywords){
+		try {
+			List<Grade> list = gradeService.query(keywords);
+
+			return MsgResponse.success("success", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}
+	}
+	
 	@ApiOperation(value = "保存或修改年级信息", notes = "如果年级id不为空表示更新操作，如果年级id为空表示插入操作")
 	@PostMapping("saveOrUpdateGrade")
 	public MsgResponse saveOrUpdateGrade(Grade grade) {
