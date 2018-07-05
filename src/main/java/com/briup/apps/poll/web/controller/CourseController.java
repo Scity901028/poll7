@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiOperation;
 @RequestMapping("/course")
 public class CourseController {
 	/**
-	 * @return
+	 * @returnd
 	 */
 	@Autowired
 	private ICourseService courseService;

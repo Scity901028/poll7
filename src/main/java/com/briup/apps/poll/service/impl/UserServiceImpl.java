@@ -26,7 +26,7 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public List<User> query(String keywords) throws Exception {
 		UserExample example = new UserExample();
-		example.createCriteria().andNameLike(keywords);
+		example.createCriteria().andNameLike("%"+keywords+"%");
 		return userMapper.selectByExample(example);
 	}
 
