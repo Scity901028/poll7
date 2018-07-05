@@ -9,6 +9,15 @@
   	
   </select>
   
+  
+  <select
+   id="selectAll" 
+   parameterType="long"
+   resultMap="QuestionnaireVMResultMap">
+  	select * from poll_questionnaire
+  	
+  </select>
+  
   <resultMap
    type="com.briup.apps.poll.bean.extend.QuestionnaireVM" 
   	id="QuestionnaireVMResultMap">

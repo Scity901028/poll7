@@ -34,6 +34,9 @@
   	resultType="com.briup.apps.poll.bean.Options">
   	select * from poll_options where question_id = #{id}
   </select>
+  
+  
+  
 </mapper>
 
 

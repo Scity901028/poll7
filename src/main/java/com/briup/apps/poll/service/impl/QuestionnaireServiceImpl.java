@@ -35,9 +35,10 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService{
 	}
 	
 	@Override
-	public List<Questionnaire> findAll() throws Exception {
-		QuestionnaireExample example = new QuestionnaireExample();
-		return questionnaireMapper.selectByExampleWithBLOBs(example);
+	public List<QuestionnaireVM> findAll() throws Exception {
+//		QuestionnaireExample example = new QuestionnaireExample();
+//		return questionnaireMapper.selectByExampleWithBLOBs(example);	
+		return questionnaireVMMapper.selectAll();
 	}
 	@Override
 	public void deleteById(long id) throws Exception {

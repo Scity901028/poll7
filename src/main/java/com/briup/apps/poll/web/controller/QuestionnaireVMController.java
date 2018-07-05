@@ -41,7 +41,7 @@ public class QuestionnaireVMController {
 	@GetMapping("findAllQuestionnaire")
 	public MsgResponse findAllQuestionnaire(){
 		try {
-			List<Questionnaire> list = questionnaireService.findAll();
+			List<QuestionnaireVM> list = questionnaireService.findAll();
 			return MsgResponse.success("success", list);
 		} catch (Exception e) {
 			return MsgResponse.error(e.getMessage());

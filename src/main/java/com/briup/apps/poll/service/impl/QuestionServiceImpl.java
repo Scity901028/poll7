@@ -93,8 +93,13 @@ public class QuestionServiceImpl implements IQuestionService {
 		
 	}
 
-
-}
+	@Override
+	public List<Question> query(String keywords) throws Exception {
+		QuestionExample example = new QuestionExample();
+		example.createCriteria().andNameLike(keywords);
+		return questionMapper.selectByExample(example);
+	}
+	}
 
 
 
