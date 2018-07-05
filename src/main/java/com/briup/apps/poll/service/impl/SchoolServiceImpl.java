@@ -15,6 +15,7 @@ public class SchoolServiceImpl implements ISchoolService {
 	private SchoolMapper schoolMapper;
 	
 	@Override
+	
 	public List<School> findAll() throws Exception {
 		//创建空模板
 		SchoolExample example = new SchoolExample();
