@@ -26,7 +26,7 @@ public class SchoolServiceImpl implements ISchoolService {
 	@Override
 	public List<School> query(String keywords) throws Exception {
 		SchoolExample example = new SchoolExample();
-		example.createCriteria().andNameLike(keywords);
+		example.createCriteria().andNameLike("%"+keywords+"%");
 		return schoolMapper.selectByExampleWithBLOBs(example);
 	}
 
