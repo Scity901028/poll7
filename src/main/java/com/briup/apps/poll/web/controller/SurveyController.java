@@ -39,15 +39,15 @@ public class SurveyController {
 				// 5|4
 				String selectStr = answer.getSelections();
 				if(selectStr!=null){
-					//arr = ["5","4"]
+					//分割数组，arr = ["5","4"]
 					String[] arr = selectStr.split("[|]");
 					Double singleTotal = 0.0;
 					for(String a : arr){
 						int select = Integer.parseInt(a);
 						singleTotal += select;
 					}
-					double singleAverage = singleTotal/arr.length;
-					total += singleAverage;
+					double singleAverage = singleTotal/arr.length;//一行记录的平均分
+					total += singleAverage;//平均分的总和
 				}
 			}
 			double average = total / answers.size();
@@ -61,7 +61,7 @@ public class SurveyController {
 		}
 	}
 	
-	
+	//学生从手机端进行登录
 	@ApiOperation(value="登录课调",notes="code表示课调编号")
 	@GetMapping(value="loginSurvey")
 	public MsgResponse loginSurvey(long code){
