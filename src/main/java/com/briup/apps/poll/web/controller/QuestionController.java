@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.briup.apps.poll.bean.Question;
+import com.briup.apps.poll.bean.User;
 import com.briup.apps.poll.bean.extend.QuestionVM;
 import com.briup.apps.poll.service.IQuestionService;
 import com.briup.apps.poll.util.MsgResponse;
@@ -94,5 +95,18 @@ public class QuestionController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
+	// 关键字查询
+	@ApiOperation("根据关键字查看教师信息")
+	@GetMapping("/queryByKeyWords")
+	public MsgResponse query(String keywords) {
+		try {
+			List<Question> list = questionService.query(keywords);
+			return MsgResponse.success("成功", list);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return MsgResponse.error(e.getMessage());
+		}
+	}
+
 	
 }
