@@ -5,6 +5,7 @@ import java.util.List;
 import com.briup.apps.poll.bean.School;
 
 public interface ISchoolService {
+	
 	List<School> findAll() throws Exception;
 	
 	List<School> query(String keywords) throws Exception;
