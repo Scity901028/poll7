@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.briup.apps.poll.bean.ClazzExample;
 import com.briup.apps.poll.bean.Grade;
 import com.briup.apps.poll.bean.GradeExample;
 import com.briup.apps.poll.bean.extend.GradeVM;
@@ -58,6 +59,14 @@ public class GradeServiceImpl implements IGradeService {
 	public void deleteById(long id) throws Exception {
 		// TODO Auto-generated method stub
 		gradeMapper.deleteByPrimaryKey(id);
+	}
+
+	@Override
+	public List<Grade> query(String keywords) {
+		// TODO Auto-generated method stub
+		GradeExample example = new GradeExample();
+		example.createCriteria().andNameLike("%"+keywords+"%");
+		return gradeMapper.selectByExampleWithBLOBs(example);
 	}
 
 }
