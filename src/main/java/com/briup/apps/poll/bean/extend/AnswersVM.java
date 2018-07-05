@@ -1,18 +1,19 @@
 package com.briup.apps.poll.bean.extend;
 
-import com.briup.apps.poll.bean.Survey;
+
 
 public class AnswersVM {
 	private Long id;
 	private String selections;
 	private String checkes;
 	private String content;
-	private Survey survey;
+	private SurveyVM survey;
 	
-	public Survey getSurvey() {
+
+	public SurveyVM getSurvey() {
 		return survey;
 	}
-	public void setSurvey(Survey survey) {
+	public void setSurvey(SurveyVM survey) {
 		this.survey = survey;
 	}
 	public Long getId() {

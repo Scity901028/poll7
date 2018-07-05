@@ -96,6 +96,7 @@ public class SchoolController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return MsgResponse.error(e.getMessage());
+			
 		}
 	}
 	
