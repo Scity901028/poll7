@@ -6,18 +6,20 @@ import com.briup.apps.poll.bean.User;
 
 public class SurveyVM {
 	private Long id;
-	public Double getAverage() {
-		return average;
-	}
-	public void setAverage(Double average) {
-		this.average = average;
-	}
 	private Double average;
 	private String status;
 	private String code;
 	private String surveyDate;
 	private Course course;
 	private User teacher;
+	
+	public Double getAverage() {
+		return average;
+	}
+	public void setAverage(Double average) {
+		this.average = average;
+	}
+	
 	public User getTeacher() {
 		return teacher;
 	}

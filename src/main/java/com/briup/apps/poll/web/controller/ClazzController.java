@@ -27,7 +27,7 @@ public class ClazzController {
 
 	@ApiOperation(value = "查询所有的班级信息", notes = "每个班级信息中包含班级所属年级和班级所属的班主任的信息")
 	@GetMapping("findAllClazzVM")
-	public MsgResponse findAllClazzVM() {
+	public MsgResponse findAllClazzVM() throws Exception{
 		try {
 			List<ClazzVM> list = clazzService.findAllClazzVM();
 			return MsgResponse.success("success", list);
@@ -50,12 +50,12 @@ public class ClazzController {
 		}
 	}
 	*/
-	/*
+	
 	@ApiOperation("关键字查询班级信息")
-	@GetMapping("query")
+	@GetMapping("keywordsquery")
 	public MsgResponse query(String keywords){
 		try {
-			List<Clazz> list = clazzService.findAll();
+			List<Clazz> list = clazzService.query(keywords);
 
 			return MsgResponse.success("success", list);
 		} catch (Exception e) {
@@ -63,7 +63,7 @@ public class ClazzController {
 			return MsgResponse.error(e.getMessage());
 		}
 	}
-	*/
+
 	@ApiOperation("通过ID查询所有的班级信息")
 	@GetMapping("selectClazzById")
 	public MsgResponse selectClazzById(long id) {
