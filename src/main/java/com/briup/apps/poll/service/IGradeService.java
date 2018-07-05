@@ -17,4 +17,6 @@ public interface IGradeService {
 	void deleteById(long id) throws Exception;
 
 	void saveOrUpdate(Grade grade) throws Exception;
+
+	List<Grade> query(String keywords) throws Exception;
 }
